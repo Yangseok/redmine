@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+
+  redmine:
+    image: redmine
+    restart: always
+    ports:
+      - 3030:3000
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_PASSWORD: example
+      REDMINE_SECRET_KEY_BASE: supersecretkey
+    volumes:
+      - ./volumes/data:/home/redmine/data
+      - ./volumes/files:/usr/src/redmine/files
+      - ./configuration.yml:/usr/src/redmine/config/configuration.yml
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: redmine
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
