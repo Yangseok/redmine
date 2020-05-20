@@ -12,7 +12,7 @@ services:
       REDMINE_DB_PASSWORD: example
       REDMINE_SECRET_KEY_BASE: supersecretkey
     volumes:
-      - ./volumes/data:/home/redmine/data
+      - ./data:/data
       - ./volumes/files:/usr/src/redmine/files
       - ./configuration.yml:/usr/src/redmine/config/configuration.yml
     depends_on:
