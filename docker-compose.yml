@@ -14,7 +14,7 @@ services:
       REDMINE_DB_PASSWORD: example
       REDMINE_SECRET_KEY_BASE: supersecretkey
     volumes:
-      - /data:/data
+      - ./volumes/data:/data
       - ./volumes/files:/usr/src/redmine/files
       - ./volumes/plugins:/usr/src/redmine/plugins
       - ./volumes/themes:/usr/src/redmine/public/themes
